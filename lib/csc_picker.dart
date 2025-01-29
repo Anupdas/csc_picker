@@ -1,9 +1,11 @@
 library csc_picker;
 
-import 'package:csc_picker/dropdown_with_search.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
+
+import 'package:csc_picker/dropdown_with_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
 import 'model/select_status_model.dart';
 
 enum Layout { vertical, horizontal }
@@ -545,9 +547,8 @@ class CSCPicker extends StatefulWidget {
     this.countryDropdownLabel = "Country",
     this.stateDropdownLabel = "State",
     this.cityDropdownLabel = "City",
-
-    this.countryFilter, this.selectedItemPadding,
     this.countryFilter,
+    this.selectedItemPadding,
   }) : super(key: key);
 
   final ValueChanged<String>? onCountryChanged;
@@ -647,7 +648,7 @@ class CSCPickerState extends State<CSCPicker> {
     if (_countryFilter.isNotEmpty) {
       _countryFilter.forEach((element) {
         var result = countries[Countries[element]!];
-        if(result!=null) addCountryToList(result);
+        if (result != null) addCountryToList(result);
       });
     } else {
       countries.forEach((data) {
@@ -810,9 +811,7 @@ class CSCPickerState extends State<CSCPicker> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  widget.showStates
-                      ? stateDropdown()
-                      : Container(),
+                  widget.showStates ? stateDropdown() : Container(),
                   SizedBox(
                     height: 10.0,
                   ),
